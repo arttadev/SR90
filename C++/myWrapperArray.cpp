@@ -52,10 +52,9 @@ bool myWrapperArray::empty(void) const
     return mArray.empty() ;
 }
 
-std::ostream& operator<< (std::ostream& os, const myWrapperArray& rhs)
-{
-    std::vector<int>::iterator it = rhs.mArray.begin() ;
-
-    
-    for (it)
-}
+// std::ostream& operator<< (std::ostream& os, const myWrapperArray& rhs)
+// {
+//     for (int it = 0; it < rhs.mArray.size(); ++it)
+// 	os << rhs.mArray.at(it) << ", " ;
+//     return os ;
+// }

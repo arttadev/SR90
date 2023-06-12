@@ -17,7 +17,7 @@ public:
     int size(void) const ;
     bool empty(void) const ;
     int capacity(void) const ;
-    friend std::ostream& operator<< (std::ostream&, const myWrapperArray& );
+    //friend std::ostream& operator<< (std::ostream&, const myWrapperArray& );
 } ;
 
 #endif
