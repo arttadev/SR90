@@ -2,59 +2,54 @@
 
 void myWrapperArray::push_back(const int& inBack)
 {
-    mArray.push_back(inBack);
+    myArray.push_back(inBack);
 }
 
 void myWrapperArray::reserve(const int& inRes)
 {
-    mArray.reserve(inRes) ;
+    myArray.reserve(inRes);
 }
 
-void myWrapperArray::insert(const int& inPos, const int& inElem)
+void myWrapperArray::insert(const int& position, const int& inElem)
 {
-    if (inPos > mArray.size())
+    if (position > myArray.size())
     {
-        std::cout << "Error: Invalid position" << std::endl ;
+        std::cout << "Invalid position!" << std::endl;
         return ;
     }
-    std::vector<int>::iterator it = mArray.begin() ;
-    it += inPos ;
-    mArray.insert(it, inElem) ;
+    std::vector<int>::iterator it = myArray.begin();
+    it += position;
+    myArray.insert(it, inElem);
 }
 
-int myWrapperArray::at(const int& inPos) const
+int myWrapperArray::at(const int& position) const
 {
-    if (inPos > mArray.size())
+    if (position > myArray.size())
     {
-        std::cout << "Error: Invalid position" << std::endl ;
-        return -1 ;
+        std::cout << "Invalid position!" << std::endl;
+        return -1;
     }
-    return mArray.at(inPos) ;
+    return myArray.at(position);
 }
 
 const int& myWrapperArray::operator[](const int& inIndex) const
 {
-    return mArray[inIndex] ;
+    return myArray[inIndex] ;
 }
 
 int myWrapperArray::size(void) const
 {
-    return mArray.size() ;
-}
-
-int myWrapperArray::capacity(void) const
-{
-    return mArray.capacity() ;
+    return myArray.size();
 }
 
 bool myWrapperArray::empty(void) const
 {
-    return mArray.empty() ;
+    return myArray.empty();
 }
 
-// std::ostream& operator<< (std::ostream& os, const myWrapperArray& rhs)
-// {
-//     for (int it = 0; it < rhs.mArray.size(); ++it)
-// 	os << rhs.mArray.at(it) << ", " ;
-//     return os ;
-// }
+int myWrapperArray::capacity(void) const
+{
+    return myArray.capacity();
+}
+
+

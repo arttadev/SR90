@@ -8,100 +8,109 @@ typedef struct myWrapperArray
     int capacity;
 } myWrapperArray;
 
-void init(myWrapperArray *arr)
+void init_myArray(myWrapperArray *myArray)
 {
-    arr->array = NULL;
-    arr->capacity = 0;
-    arr->size = 0;
+    myArray->array = NULL;
+    myArray->capacity = 0;
+    myArray->size = 0;
 }
 
-void push_back(myWrapperArray* arr, int elem)
+void push_back(myWrapperArray *myArray, int newElement)
 {
-    if (arr->size == arr->capacity) {
-        int newCapacity = (arr->capacity == 0) ? 1 : arr->capacity * 2;
-        int* newArray = (int*)realloc(arr->array, newCapacity * sizeof(int));
-        if (newArray == NULL) {
-            printf("Failed to allocate memory.");
-            return;
+    if (myArray->size == myArray->capacity)
+    {
+        int newCapacity = (myArray->capacity == 0) ? 1 : myArray->capacity * 2;
+        int *newMyArray = (int*)realloc(myArray->array, newCapacity * sizeof(int));
+        if (!newMyArray)
+        {
+            printf("Failed!!");
+            return ;
         }
-        arr->array = newArray;
-        arr->capacity = newCapacity;
+        myArray->array = newMyArray;
+        myArray->capacity = newCapacity;
     }
-    arr->array[arr->size] = elem;
-    arr->size++;
+    myArray->array[myArray->size] = newElement;
+    myArray->size++;
 }
 
-void reserve(myWrapperArray *arr, int num) {
-    if (num > arr->capacity) {
+void reserve(myWrapperArray *myArray, int num)
+{
+    if (num > myArray->capacity)
+    {
         int newCapacity = num;
-        int* newArray = (int*)realloc(arr->array, newCapacity * sizeof(int));
-        if (newArray == NULL) {
-            printf("Failed to allocate memory.");
-            return;
+        int *newMyArray = (int*)realloc(myArray->array, newCapacity * sizeof(int));
+        if (!newMyArray)
+        {
+            printf("Failed to allocate memory!\n");
+            return ;
         }
-        arr->array = newArray;
-        arr->capacity = newCapacity;
+        myArray->array = newMyArray;
+        myArray->capacity = newCapacity;
     }
 }
 
-void insert(myWrapperArray *arr, int pos, int elem) {
-    if (pos < 0 || pos > arr->size) {
-        printf("Invalid position.");
-        return;
+void insert(myWrapperArray *myArray, int position, int newElement)
+{
+    if (position < 0 || position > myArray->size)
+    {
+        printf("Invalid position!\n");
+        return ;
     }
-    if (arr->size == arr->capacity) {
-        int newCapacity = (arr->capacity == 0) ? 1 : arr->capacity * 2;
-        int* newArray = (int*)realloc(arr->array, newCapacity * sizeof(int));
-        if (newArray == NULL) {
-            printf("Failed to allocate memory.");
-            return;
+    if (myArray->size == myArray->capacity)
+    {
+        int newCapacity = (myArray->capacity == 0) ? 1 : myArray->capacity * 2;
+        int *newMyArray = (int*)realloc(myArray->array, newCapacity * sizeof(int));
+        if (!newMyArray)
+        {
+            printf("Failed!!");
+            return ;
         }
-        arr->array = newArray;
-        arr->capacity = newCapacity;
+        myArray->array = newMyArray;
+        myArray->capacity = newCapacity;
     }
-    for (int i = arr->size - 1; i >= pos; i--) {
-        arr->array[i + 1] = arr->array[i];
+    for (int i = myArray->size - 1; i >= position; i--)
+    {
+        myArray->array[i + 1] = myArray->array[i];
     }
-    arr->array[pos] = elem;
-    arr->size++;
+    myArray->array[position] = newElement;
+    myArray->size++;
 }
 
-int at(myWrapperArray *arr, int pos) {
-    if (pos < 0 || pos >= arr->size) {
-        printf("Invalid position.");
+int at(myWrapperArray *myArray, int position)
+{
+    if (position < 0 || position > myArray->capacity)
+    {
+        printf("Invalid position!\n");
         return -1;
     }
-    return arr->array[pos];
+    return myArray->array[position];
 }
 
-int size(myWrapperArray *arr) {
-    return arr->size;
+int size(myWrapperArray *myArray)
+{
+    return myArray->size;
 }
 
-int empty(myWrapperArray *arr) {
-    return arr->size == 0;
+int empty(myWrapperArray *myArray)
+{
+    return myArray->size == 0;
 }
 
-int capacity(myWrapperArray *arr) {
-    return arr->capacity;
+int capacity(myWrapperArray *myArray)
+{
+    return myArray->capacity;
 }
 
 int main()
 {
-    myWrapperArray  array;
-    init(&array);
-    push_back(&array, 1);
-    push_back(&array, 4);
-    push_back(&array, 3);
-    printf("Size: %d\n", size(&array));
-    printf("Empty: %d\n", empty(&array));
-    printf("Capacity: %d\n", capacity(&array));
-    printf("Element at position 1: %d\n", at(&array, 1));
-    reserve(&array, 10);
-    insert(&array, 1, 7);
-    printf("Size: %d\n", size(&array));
-    printf("Element at position 1: %d\n", at(&array, 1));
-
-    free(array.array);
+    myWrapperArray  myArray;
+    init_myArray(&myArray);
+    reserve(&myArray, 4);
+    push_back(&myArray, 5);
+    push_back(&myArray, 3);
+    push_back(&myArray, 2);
+    insert(&myArray, 1, 5);
+    printf("%d\n", myArray.array[1]);
+    free(myArray.array);
     return 0;
 }

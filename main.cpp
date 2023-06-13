@@ -1,22 +1,23 @@
 #include "myWrapperArray.hpp"
 
-int main() {
-    myWrapperArray array;
+int main()
+{
+    myWrapperArray myArray;
 
-    array.push_back(1);
-    array.push_back(2);
-    array.push_back(3);
+    myArray.push_back(1);
+    myArray.push_back(2);
+    myArray.push_back(3);
 
-    std::cout << "Size: " << array.size() << std::endl;
-    std::cout << "Empty: " << array.empty() << std::endl;
-    std::cout << "Capacity: " << array.capacity() << std::endl;
-    std::cout << "Element at position 1: " << array.at(1) << std::endl;
+    std::cout << "Size: " << myArray.size() << std::endl;
+    std::cout << "Empty: " << myArray.empty() << std::endl;
+    std::cout << "Capacity: " << myArray.capacity() << std::endl;
+    std::cout << "Element at position 1: " << myArray.at(1) << std::endl;
 
-    array.reserve(10);
-    array.insert(1, 4);
+    myArray.reserve(10);
+    myArray.insert(1, 4);
 
-    std::cout << "Size: " << array.size() << std::endl;
-    std::cout << "Element at position 1: " << array.at(1) << std::endl;
+    std::cout << "Size: " << myArray.size() << std::endl;
+    std::cout << "Element at position 1: " << myArray.at(1) << std::endl;
 
     return 0;
 }
